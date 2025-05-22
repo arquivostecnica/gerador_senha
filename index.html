@@ -195,7 +195,7 @@
 
     <script>
         function mostrarSenhaECopiar() {
-            const senha = '!#*0125+';
+            const senha = '*929798@';
             const resultadoElement = document.getElementById('resultado');
             resultadoElement.textContent = `${senha}`;
 
@@ -205,7 +205,7 @@
 
             setTimeout(() => {
                 resultadoElement.textContent = '';
-            }, 5000); // 5 segundos
+            }, 7000); // Aumentado para 7 segundos
         }
 
         function calcESenhaECopiar() {
@@ -220,22 +220,23 @@
             
             setTimeout(() => {
                 resultadoElement.innerHTML = '';
-            }, 5000); // 5 segundos
+            }, 7000); // Aumentado para 7 segundos
         }
 
         function mostrarSenhasAntigas() {
             const senha1 = '*0724@';
             const senha2 = '$&0924@';
+            const senha3 = '!#*0125+'; // Adicionada a senha técnica atual às senhas antigas
             const resultadoElement = document.getElementById('resultado');
-            resultadoElement.innerHTML = "S1: " + senha1 + " | S2: " + senha2;
+            resultadoElement.innerHTML = "S1: " + senha1 + " | S2: " + senha2 + " | S3: " + senha3;
             
-            navigator.clipboard.writeText(senha1 + ' ' + senha2).catch(err => {
+            navigator.clipboard.writeText(senha1 + ' ' + senha2 + ' ' + senha3).catch(err => {
                 console.error('Erro ao copiar senha: ', err);
             });
             
             setTimeout(() => {
                 resultadoElement.innerHTML = '';
-            }, 5000); // 5 segundos
+            }, 7000); // Aumentado para 7 segundos
         }
 
         function gerarSenhaProjercom() {
@@ -252,8 +253,8 @@
             // Criar conteúdo para o arquivo de contra senhas
             const contrasenhas = `Senha Projercom: ${senha}\n` +
                                  `Gerado em: ${data.toLocaleDateString()} às ${hora}:${minutos}\n` +
-                                 `Senha Técnica: !#*0125+\n` +
-                                 `Senhas Antigas: *0724@ e $&0924@\n\n` +
+                                 `Senha Técnica: *929798@\n` +
+                                 `Senhas Antigas: *0724@, $&0924@ e !#*0125+\n\n` + // Atualizado para incluir a senha técnica
                                  `Link para download do programa de senhas:\n` +
                                  `${linkSenhas}`;
             
@@ -273,12 +274,12 @@
                 console.error('Erro ao copiar senha: ', err);
             });
             
-            // Limpar após 5 segundos
+            // Limpar após 7 segundos
             setTimeout(() => {
                 resultadoElement.innerHTML = '';
                 downloadLink.style.display = 'none';
                 URL.revokeObjectURL(url);
-            }, 5000); // 5 segundos
+            }, 7000); // Aumentado para 7 segundos
         }
     </script>
 </body>
