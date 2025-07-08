@@ -6,154 +6,365 @@
     <title>Gerador de Senha Técnica - Grupo RRSTRIKE</title>
     <style>
         :root {
-            --primary-color: #0a3b66; /* Azul escuro */
-            --secondary-color: #ff7f27; /* Laranja */
-            --tertiary-color: #f2f2f2; /* Cinza claro para fundo */
-            --text-color: #333333; /* Cinza escuro para texto */
-            --text-light: #666666; /* Cinza médio para texto secundário */
+            --primary-color: #0a3b66;
+            --secondary-color: #ff7f27;
+            --tertiary-color: #f2f2f2;
+            --text-color: #333333;
+            --text-light: #666666;
             --white: #ffffff;
             --hover-primary: #092e4f;
             --hover-secondary: #e66c1e;
+            --success-color: #4CAF50;
+            --success-hover: #45a049;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
+            --transition-fast: 0.2s ease;
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            box-sizing: border-box;
         }
         
         body {
-            background-color: var(--tertiary-color);
+            background: linear-gradient(135deg, var(--tertiary-color) 0%, #e8e8e8 100%);
             color: var(--text-color);
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             padding: 0;
             margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         .header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0d4a7a 100%);
             color: var(--white);
-            padding: 15px 0;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
         }
         
         .logo-text {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 28px;
+            font-weight: 700;
             margin: 0;
             color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
         }
         
         .subtitle {
             font-size: 16px;
-            margin: 5px 0 15px;
+            margin: 8px 0 20px;
             color: var(--white);
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 15px;
+            padding: 20px;
+            flex: 1;
         }
         
         .button-container {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         button, .link-button {
-            padding: 12px 25px;
+            padding: 14px 28px;
             font-size: 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: var(--border-radius);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-smooth);
             font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+        }
+        
+        button::before, .link-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left var(--transition-smooth);
+        }
+        
+        button:hover::before, .link-button:hover::before {
+            left: 100%;
         }
         
         button {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0d4a7a 100%);
             color: var(--white);
         }
         
         button:hover {
-            background-color: var(--hover-primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--hover-primary) 0%, #0a3b66 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+            transition: all var(--transition-fast);
         }
         
         .link-button {
-            background-color: var(--secondary-color);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #ff8c3a 100%);
             color: var(--white);
-            text-decoration: none;
-            display: inline-block;
-            margin: 8px;
+            margin: 5px;
         }
         
         .link-button:hover {
-            background-color: var(--hover-secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--hover-secondary) 0%, #ff7f27 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+        
+        .link-button:active {
+            transform: translateY(-1px);
+            transition: all var(--transition-fast);
         }
         
         #resultado {
-            margin: 10px auto;
-            padding: 5px;
-            background-color: var(--white);
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            min-height: 15px;
-            max-width: 50%;
-            font-size: 14px;
-            display: inline-block;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            min-height: 60px;
+            max-width: 600px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #resultado.show {
+            border-color: var(--success-color);
+            animation: pulse 0.6s ease-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.4s ease-out;
         }
         
         #projercom-btn {
-            background-color: var(--secondary-color);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #ff8c3a 100%);
             color: var(--white);
         }
         
         #projercom-btn:hover {
-            background-color: var(--hover-secondary);
+            background: linear-gradient(135deg, var(--hover-secondary) 0%, #ff7f27 100%);
         }
         
         #download-link {
             display: none;
-            background-color: #4CAF50; /* Verde para destaque */
+            background: linear-gradient(135deg, var(--success-color) 0%, #5cbf60 100%);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: var(--border-radius);
             font-weight: 600;
-            margin-top: 10px;
-            transition: all 0.3s ease;
+            margin-top: 15px;
+            transition: all var(--transition-smooth);
             font-size: 14px;
+            box-shadow: 0 4px 12px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #download-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left var(--transition-smooth);
+        }
+        
+        #download-link:hover::before {
+            left: 100%;
         }
         
         #download-link:hover {
-            background-color: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--success-hover) 0%, var(--success-color) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
         }
         
         .links-section {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+            position: relative;
+        }
+        
+        .links-section::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         
         .links-section h3 {
             color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 16px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         .footer {
-            margin-top: 30px;
-            padding: 15px;
-            background-color: var(--primary-color);
+            margin-top: 50px;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0d4a7a 100%);
             color: var(--white);
             font-size: 14px;
+            box-shadow: 0 -4px 20px var(--shadow-light);
+        }
+        
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+            position: relative;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Responsividade melhorada */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .button-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .links-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            
+            button, .link-button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            #resultado {
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px 10px;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            button, .link-button {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -172,20 +383,22 @@
             <button id="projercom-btn" onclick="gerarSenhaProjercom()">Projercom</button>
         </div>
         
-        <!-- Apenas um quadrado branco para todas as senhas -->
         <div id="resultado"></div>
-        <a id="download-link" href="#" download="contra_senhas.txt">Download Contra Senhas</a>
+        <a id="download-link" href="#" download="contra_senhas.txt">📥 Download Contra Senhas</a>
 
         <div class="links-section">
             <h3>Links Úteis</h3>
-            <!-- Botões de link -->
-            <a href="https://test.retaguarda.app/" class="link-button" rel="noopener noreferrer">V4</a>
-            <a href="https://app.pipefy.com/pipes/303252157" class="link-button" rel="noopener noreferrer">Pipefy</a>
-            <a href="https://licenciamento.touchone.com.br/login" class="link-button" rel="noopener noreferrer">Licenciamento</a>
-            <a href="https://app.voicechat.com.br/" class="link-button" rel="noopener noreferrer">Voicechat</a>
-            <a href="https://pegasuspdv.com.br/login" class="link-button" rel="noopener noreferrer">Portal Pegasus</a>
-            <a href="https://test.retaguarda.app/testesgrrstrike/login" class="link-button" rel="noopener noreferrer">Dominio Teste</a>
-            <a href="https://webmail-seguro.com.br/v2/?_task=logout&_token=2PYpKAGPvwLCNKmolRru9NmhyzINxHnO" class="link-button" rel="noopener noreferrer">Webmail</a>
+            <div class="links-grid">
+                <a href="https://test.retaguarda.app/" class="link-button"  rel="noopener noreferrer">V4</a>
+                <a href="https://app.pipefy.com/pipes/303252157" class="link-button"  rel="noopener noreferrer">Pipefy</a>
+                <a href="https://licenciamento.touchone.com.br/login" class="link-button"  rel="noopener noreferrer">Licenciamento</a>
+                <a href="https://app.voicechat.com.br/" class="link-button"  rel="noopener noreferrer">Voicechat</a>
+                <a href="https://pegasuspdv.com.br/login" class="link-button"  rel="noopener noreferrer">Portal Pegasus</a>
+                <a href="https://test.retaguarda.app/testesgrrstrike/login" class="link-button"  rel="noopener noreferrer">Dominio Teste</a>
+                <a href="https://webmail-seguro.com.br/v2/?_task=logout&_token=2PYpKAGPvwLCNKmolRru9NmhyzINxHnO" class="link-button"  rel="noopener noreferrer">Webmail</a>
+                <a href="https://parceiro.meuerponline.com.br/" class="link-button"  rel="noopener noreferrer">Portal do Parceiro Vende Aqui</a>
+                <a href="https://gruporrstrike.com.br" class="link-button"  rel="noopener noreferrer">Vende Aqui ERP</a>
+            </div>
         </div>
     </div>
     
@@ -194,93 +407,157 @@
     </div>
 
     <script>
-        function mostrarSenhaECopiar() {
-            const senha = '*929798@';
-            const resultadoElement = document.getElementById('resultado');
-            resultadoElement.textContent = `${senha}`;
-
-            navigator.clipboard.writeText(senha).catch(err => {
-                console.error('Erro ao copiar senha: ', err);
-            });
-
+        // Função utilitária para mostrar feedback visual
+        function showFeedback(element, message, duration = 7000) {
+            element.innerHTML = message;
+            element.classList.add('show', 'fade-in');
+            
             setTimeout(() => {
-                resultadoElement.textContent = '';
-            }, 7000); // Aumentado para 7 segundos
+                element.classList.remove('show', 'fade-in');
+                element.innerHTML = '';
+            }, duration);
+        }
+        
+        // Função utilitária para copiar texto
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                return true;
+            } catch (err) {
+                console.error('Erro ao copiar: ', err);
+                return false;
+            }
+        }
+        
+        // Função utilitária para adicionar loading state
+        function addLoadingState(button) {
+            button.classList.add('loading');
+            setTimeout(() => {
+                button.classList.remove('loading');
+            }, 500);
+        }
+
+        function mostrarSenhaECopiar() {
+            const button = event.target;
+            addLoadingState(button);
+            
+            const senha = '*341154@'; // Nova senha conforme solicitado
+            const resultadoElement = document.getElementById('resultado');
+            
+            copyToClipboard(senha);
+            showFeedback(resultadoElement, `<strong>Senha Técnica:</strong> ${senha} <br><small>✅ Copiada para área de transferência</small>`);
         }
 
         function calcESenhaECopiar() {
-            var xData = new Date();
-            var xSenha = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 10).toString();
+            const button = event.target;
+            addLoadingState(button);
+            
+            const xData = new Date();
+            const xSenha = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 10).toString();
             const resultadoElement = document.getElementById('resultado');
-            resultadoElement.innerHTML = "Senha Padrão: " + xSenha;
             
-            navigator.clipboard.writeText(xSenha).catch(err => {
-                console.error('Erro ao copiar senha: ', err);
-            });
-            
-            setTimeout(() => {
-                resultadoElement.innerHTML = '';
-            }, 7000); // Aumentado para 7 segundos
+            copyToClipboard(xSenha);
+            showFeedback(resultadoElement, `<strong>Senha Sync:</strong> ${xSenha} <br><small>✅ Copiada para área de transferência</small>`);
         }
 
         function mostrarSenhasAntigas() {
+            const button = event.target;
+            addLoadingState(button);
+            
             const senha1 = '*0724@';
             const senha2 = '$&0924@';
-            const senha3 = '!#*0125+'; // Adicionada a senha técnica atual às senhas antigas
+            const senha3 = '*929798@'; // Senha antiga conforme solicitado
+            const senhasTexto = `${senha1} ${senha2} ${senha3}`;
             const resultadoElement = document.getElementById('resultado');
-            resultadoElement.innerHTML = "S1: " + senha1 + " | S2: " + senha2 + " | S3: " + senha3;
             
-            navigator.clipboard.writeText(senha1 + ' ' + senha2 + ' ' + senha3).catch(err => {
-                console.error('Erro ao copiar senha: ', err);
-            });
-            
-            setTimeout(() => {
-                resultadoElement.innerHTML = '';
-            }, 7000); // Aumentado para 7 segundos
+            copyToClipboard(senhasTexto);
+            showFeedback(resultadoElement, 
+                `<strong>Senhas Antigas:</strong><br>
+                S1: ${senha1} | S2: ${senha2} | S3: ${senha3}<br>
+                <small>✅ Todas copiadas para área de transferência</small>`
+            );
         }
 
         function gerarSenhaProjercom() {
+            const button = event.target;
+            addLoadingState(button);
+            
             const data = new Date();
             const hora = data.getHours().toString().padStart(2, '0');
             const minutos = data.getMinutes().toString().padStart(2, '0');
             
-            // Gerar senha no formato S@urus+2digitos hora
             const senha = `S@urus${hora}`;
             
-            // Link para download do programa de senhas
             const linkSenhas = "https://gruporrstrike-my.sharepoint.com/personal/gustavo_gruporrstrike_com_br/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fgustavo%5Fgruporrstrike%5Fcom%5Fbr%2FDocuments%2FSenhas%202%2E9%2Eexe";
             
-            // Criar conteúdo para o arquivo de contra senhas
             const contrasenhas = `Senha Projercom: ${senha}\n` +
                                  `Gerado em: ${data.toLocaleDateString()} às ${hora}:${minutos}\n` +
-                                 `Senha Técnica: *929798@\n` +
-                                 `Senhas Antigas: *0724@, $&0924@ e !#*0125+\n\n` + // Atualizado para incluir a senha técnica
+                                 `Senha Técnica: *341154@\n` +
+                                 `Senha Antiga: *929798@\n` +
+                                 `Senhas Antigas Adicionais: *0724@, $&0924@\n\n` +
                                  `Link para download do programa de senhas:\n` +
                                  `${linkSenhas}`;
             
-            // Mostrar a senha gerada
             const resultadoElement = document.getElementById('resultado');
-            resultadoElement.innerHTML = `<strong>Senha:</strong> ${senha}`;
+            showFeedback(resultadoElement, `<strong>Senha Projercom:</strong> ${senha} <br><small>✅ Copiada para área de transferência</small>`);
             
-            // Preparar link de download
             const downloadLink = document.getElementById('download-link');
             const blob = new Blob([contrasenhas], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             downloadLink.href = url;
             downloadLink.style.display = 'inline-block';
+            downloadLink.classList.add('fade-in');
             
-            // Copiar senha para a área de transferência
-            navigator.clipboard.writeText(senha).catch(err => {
-                console.error('Erro ao copiar senha: ', err);
-            });
+            copyToClipboard(senha);
             
-            // Limpar após 7 segundos
             setTimeout(() => {
-                resultadoElement.innerHTML = '';
                 downloadLink.style.display = 'none';
+                downloadLink.classList.remove('fade-in');
                 URL.revokeObjectURL(url);
-            }, 7000); // Aumentado para 7 segundos
+            }, 7000);
         }
+        
+        // Adicionar efeito de ripple nos botões
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.classList.contains('link-button')) {
+                const ripple = document.createElement('span');
+                const rect = e.target.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                e.target.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+        });
+        
+        // Adicionar animação de ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
