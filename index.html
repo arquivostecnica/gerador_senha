@@ -16,6 +16,8 @@
             --hover-secondary: #e66c1e;
             --success-color: #4CAF50;
             --success-hover: #45a049;
+            --highlight-color: #e74c3c; /* Vermelho para destaque */
+            --highlight-hover: #c0392b;
             --shadow-light: rgba(0, 0, 0, 0.1);
             --shadow-medium: rgba(0, 0, 0, 0.15);
             --border-radius: 8px;
@@ -92,6 +94,97 @@
             margin: 0 auto;
             padding: 20px;
             flex: 1;
+        }
+        
+        /* Seção destacada para Gestão de Tarefas */
+        .highlight-section {
+            background: linear-gradient(135deg, var(--highlight-color) 0%, #e55a4f 100%);
+            color: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse-highlight 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-highlight {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        .highlight-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight-description {
+            font-size: 16px;
+            margin: 0 0 20px 0;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight-button {
+            background: var(--white);
+            color: var(--highlight-color);
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .highlight-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(231, 76, 60, 0.1), transparent);
+            transition: left var(--transition-smooth);
+        }
+        
+        .highlight-button:hover::before {
+            left: 100%;
+        }
+        
+        .highlight-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: #f8f9fa;
+        }
+        
+        .highlight-button:active {
+            transform: translateY(-1px);
+            transition: all var(--transition-fast);
         }
         
         .button-container {
@@ -327,6 +420,24 @@
                 padding: 15px;
             }
             
+            .highlight-section {
+                padding: 20px;
+                margin-bottom: 25px;
+            }
+            
+            .highlight-title {
+                font-size: 20px;
+            }
+            
+            .highlight-description {
+                font-size: 14px;
+            }
+            
+            .highlight-button {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+            
             .button-container {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -357,6 +468,19 @@
                 padding: 15px 10px;
             }
             
+            .highlight-section {
+                padding: 15px;
+            }
+            
+            .highlight-title {
+                font-size: 18px;
+            }
+            
+            .highlight-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
             .links-grid {
                 grid-template-columns: 1fr;
             }
@@ -376,6 +500,17 @@
     </div>
     
     <div class="container">
+        <!-- Seção destacada para Gestão de Tarefas -->
+        <div class="highlight-section">
+            <h2 class="highlight-title">📋 Gestão de Tarefas</h2>
+            <p class="highlight-description">
+                Acesse nossa plataforma completa de gestão de tarefas e organize seu trabalho de forma eficiente
+            </p>
+            <a href="https://gestaotarefas.com" class="highlight-button"  rel="noopener noreferrer">
+                🚀 Acessar Gestão de Tarefas
+            </a>
+        </div>
+        
         <div class="button-container">
             <button onclick="mostrarSenhaECopiar()">Senha Técnica</button>
             <button onclick="calcESenhaECopiar()">Senha Sync</button>
@@ -441,7 +576,7 @@
             const button = event.target;
             addLoadingState(button);
             
-            const senha = '*341154@'; // Nova senha conforme solicitado
+            const senha = '*341154@';
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(senha);
@@ -466,7 +601,7 @@
             
             const senha1 = '*0724@';
             const senha2 = '$&0924@';
-            const senha3 = '*929798@'; // Senha antiga conforme solicitado
+            const senha3 = '*929798@';
             const senhasTexto = `${senha1} ${senha2} ${senha3}`;
             const resultadoElement = document.getElementById('resultado');
             
@@ -519,7 +654,7 @@
         
         // Adicionar efeito de ripple nos botões
         document.addEventListener('click', function(e) {
-            if (e.target.tagName === 'BUTTON' || e.target.classList.contains('link-button')) {
+            if (e.target.tagName === 'BUTTON' || e.target.classList.contains('link-button') || e.target.classList.contains('highlight-button')) {
                 const ripple = document.createElement('span');
                 const rect = e.target.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
