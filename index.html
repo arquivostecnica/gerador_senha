@@ -437,15 +437,17 @@
             }, 500);
         }
 
+        // NOVA SENHA TÉCNICA: Mesmo padrão da Sync, mas com +5 na hora
         function mostrarSenhaECopiar() {
             const button = event.target;
             addLoadingState(button);
             
-            const senha = '*341154@'; // Nova senha conforme solicitado
+            const xData = new Date();
+            const xSenha = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 5).toString();
             const resultadoElement = document.getElementById('resultado');
             
-            copyToClipboard(senha);
-            showFeedback(resultadoElement, `<strong>Senha Técnica:</strong> ${senha} <br><small>✅ Copiada para área de transferência</small>`);
+            copyToClipboard(xSenha);
+            showFeedback(resultadoElement, `<strong>Senha Técnica:</strong> ${xSenha} <br><small>✅ Copiada para área de transferência</small>`);
         }
 
         function calcESenhaECopiar() {
@@ -460,20 +462,22 @@
             showFeedback(resultadoElement, `<strong>Senha Sync:</strong> ${xSenha} <br><small>✅ Copiada para área de transferência</small>`);
         }
 
+        // SENHAS ANTIGAS ATUALIZADAS: Adicionada *341154@ como S4
         function mostrarSenhasAntigas() {
             const button = event.target;
             addLoadingState(button);
             
             const senha1 = '*0724@';
             const senha2 = '$&0924@';
-            const senha3 = '*929798@'; // Senha antiga conforme solicitado
-            const senhasTexto = `${senha1} ${senha2} ${senha3}`;
+            const senha3 = '*929798@';
+            const senha4 = '*341154@'; // Senha técnica anterior movida para cá
+            const senhasTexto = `${senha1} ${senha2} ${senha3} ${senha4}`;
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(senhasTexto);
             showFeedback(resultadoElement, 
                 `<strong>Senhas Antigas:</strong><br>
-                S1: ${senha1} | S2: ${senha2} | S3: ${senha3}<br>
+                S1: ${senha1} | S2: ${senha2} | S3: ${senha3} | S4: ${senha4}<br>
                 <small>✅ Todas copiadas para área de transferência</small>`
             );
         }
@@ -490,11 +494,12 @@
             
             const linkSenhas = "https://gruporrstrike-my.sharepoint.com/personal/gustavo_gruporrstrike_com_br/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fgustavo%5Fgruporrstrike%5Fcom%5Fbr%2FDocuments%2FSenhas%202%2E9%2Eexe";
             
+            // Atualizado o arquivo de contrasenhas com a nova lógica
             const contrasenhas = `Senha Projercom: ${senha}\n` +
                                  `Gerado em: ${data.toLocaleDateString()} às ${hora}:${minutos}\n` +
-                                 `Senha Técnica: *341154@\n` +
-                                 `Senha Antiga: *929798@\n` +
-                                 `Senhas Antigas Adicionais: *0724@, $&0924@\n\n` +
+                                 `Senha Técnica: @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 5).toString()}\n` +
+                                 `Senha Sync: @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 10).toString()}\n` +
+                                 `Senhas Antigas: *0724@, $&0924@, *929798@, *341154@\n\n` +
                                  `Link para download do programa de senhas:\n` +
                                  `${linkSenhas}`;
             
