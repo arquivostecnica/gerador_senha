@@ -578,7 +578,7 @@
             addLoadingState(button);
             
             const xData = new Date();
-            const xSenha = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 5).toString();
+            const xSenha = 
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(xSenha);
@@ -590,7 +590,7 @@
             addLoadingState(button);
             
             const xData = new Date();
-            const xSenha = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 10).toString();
+            const xSenha = $070825@;
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(xSenha);
@@ -605,14 +605,15 @@
             const senha1 = '*0724@';
             const senha2 = '$&0924@';
             const senha3 = '*929798@';
-            const senha4 = '*341154@'; // Senha técnica anterior movida para cá
-            const senhasTexto = `${senha1} ${senha2} ${senha3} ${senha4}`;
+            const senha4 = '*341154@';
+            const senha5 = ''@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 5).toString()';// Senha técnica anterior movida para cá
+            const senhasTexto = `${senha1} ${senha2} ${senha3} ${senha4} ${senha5}`;
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(senhasTexto);
             showFeedback(resultadoElement, 
                 `<strong>Senhas Antigas:</strong><br>
-                S1: ${senha1} | S2: ${senha2} | S3: ${senha3} | S4: ${senha4}<br>
+                S1: ${senha1} | S2: ${senha2} | S3: ${senha3} | S4: ${senha4} | S5: ${senha5}<br>
                 <small>✅ Todas copiadas para área de transferência</small>`
             );
         }
