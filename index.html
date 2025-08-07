@@ -572,13 +572,12 @@
             }, 500);
         }
 
-        // NOVA SENHA TÉCNICA: Mesmo padrão da Sync, mas com +5 na hora
+        // SENHA TÉCNICA: Agora é fixa
         function mostrarSenhaECopiar() {
             const button = event.target;
             addLoadingState(button);
             
-            const xData = new Date();
-            const xSenha = 
+            const xSenha = '$070825@';
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(xSenha);
@@ -590,23 +589,24 @@
             addLoadingState(button);
             
             const xData = new Date();
-            const xSenha = $070825@;
+            const xSenha = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 10).toString();
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(xSenha);
             showFeedback(resultadoElement, `<strong>Senha Sync:</strong> ${xSenha} <br><small>✅ Copiada para área de transferência</small>`);
         }
 
-        // SENHAS ANTIGAS ATUALIZADAS: Adicionada *341154@ como S4
+        // SENHAS ANTIGAS: S5 agora é a fórmula dinâmica
         function mostrarSenhasAntigas() {
             const button = event.target;
             addLoadingState(button);
             
+            const xData = new Date();
             const senha1 = '*0724@';
             const senha2 = '$&0924@';
             const senha3 = '*929798@';
             const senha4 = '*341154@';
-            const senha5 = ''@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 5).toString()';// Senha técnica anterior movida para cá
+            const senha5 = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 5).toString();
             const senhasTexto = `${senha1} ${senha2} ${senha3} ${senha4} ${senha5}`;
             const resultadoElement = document.getElementById('resultado');
             
@@ -633,9 +633,9 @@
             // Atualizado o arquivo de contrasenhas com a nova lógica
             const contrasenhas = `Senha Projercom: ${senha}\n` +
                                  `Gerado em: ${data.toLocaleDateString()} às ${hora}:${minutos}\n` +
-                                 `Senha Técnica: @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 5).toString()}\n` +
+                                 `Senha Técnica: $070825@\n` +
                                  `Senha Sync: @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 10).toString()}\n` +
-                                 `Senhas Antigas: *0724@, $&0924@, *929798@, *341154@\n\n` +
+                                 `Senhas Antigas: *0724@, $&0924@, *929798@, *341154@, @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 5).toString()}\n\n` +
                                  `Link para download do programa de senhas:\n` +
                                  `${linkSenhas}`;
             
