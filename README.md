@@ -1,1 +1,1 @@
-# gerador_senha
+# geradorsenha
