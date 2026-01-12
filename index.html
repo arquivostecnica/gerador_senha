@@ -16,7 +16,7 @@
             --hover-secondary: #e66c1e;
             --success-color: #4CAF50;
             --success-hover: #45a049;
-            --highlight-color: #e74c3c; /* Vermelho para destaque */
+            --highlight-color: #e74c3c;
             --highlight-hover: #c0392b;
             --shadow-light: rgba(0, 0, 0, 0.1);
             --shadow-medium: rgba(0, 0, 0, 0.15);
@@ -96,7 +96,6 @@
             flex: 1;
         }
         
-        /* Seção destacada para Gestão de Tarefas */
         .highlight-section {
             background: linear-gradient(135deg, var(--highlight-color) 0%, #e55a4f 100%);
             color: var(--white);
@@ -414,7 +413,6 @@
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
         
-        /* Responsividade melhorada */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -500,13 +498,12 @@
     </div>
     
     <div class="container">
-        <!-- Seção destacada para Gestão de Tarefas -->
         <div class="highlight-section">
             <h2 class="highlight-title">📋 Gestão de Tarefas</h2>
             <p class="highlight-description">
                 Acesse nossa plataforma completa de gestão de tarefas e organize seu trabalho de forma eficiente
             </p>
-            <a href="https://gestaotarefas.com" class="highlight-button"  rel="noopener noreferrer">
+            <a href="https://gestaotarefas.com" class="highlight-button" rel="noopener noreferrer">
                 🚀 Acessar Gestão de Tarefas
             </a>
         </div>
@@ -524,15 +521,15 @@
         <div class="links-section">
             <h3>Links Úteis</h3>
             <div class="links-grid">
-                <a href="https://test.retaguarda.app/" class="link-button"  rel="noopener noreferrer">V4</a>
-                <a href="https://app.pipefy.com/pipes/303252157" class="link-button"  rel="noopener noreferrer">Pipefy</a>
-                <a href="https://licenciamento.touchone.com.br/login" class="link-button"  rel="noopener noreferrer">Licenciamento</a>
-                <a href="https://app.voicechat.com.br/" class="link-button"  rel="noopener noreferrer">Voicechat</a>
-                <a href="https://pegasuspdv.com.br/login" class="link-button"  rel="noopener noreferrer">Portal Pegasus</a>
-                <a href="https://test.retaguarda.app/testesgrrstrike/login" class="link-button"  rel="noopener noreferrer">Dominio Teste</a>
-                <a href="https://webmail-seguro.com.br/v2/?_task=logout&_token=2PYpKAGPvwLCNKmolRru9NmhyzINxHnO" class="link-button"  rel="noopener noreferrer">Webmail</a>
-                <a href="https://parceiro.meuerponline.com.br/" class="link-button"  rel="noopener noreferrer">Portal do Parceiro Vende Aqui</a>
-                <a href="https://gruporrstrike.com.br" class="link-button"  rel="noopener noreferrer">Vende Aqui ERP</a>
+                <a href="https://test.retaguarda.app/" class="link-button" rel="noopener noreferrer">V4</a>
+                <a href="https://app.pipefy.com/pipes/303252157" class="link-button" rel="noopener noreferrer">Pipefy</a>
+                <a href="https://licenciamento.touchone.com.br/login" class="link-button" rel="noopener noreferrer">Licenciamento</a>
+                <a href="https://app.voicechat.com.br/" class="link-button" rel="noopener noreferrer">Voicechat</a>
+                <a href="https://pegasuspdv.com.br/login" class="link-button" rel="noopener noreferrer">Portal Pegasus</a>
+                <a href="https://test.retaguarda.app/testesgrrstrike/login" class="link-button" rel="noopener noreferrer">Dominio Teste</a>
+                <a href="https://webmail-seguro.com.br/v2/?_task=logout&_token=2PYpKAGPvwLCNKmolRru9NmhyzINxHnO" class="link-button" rel="noopener noreferrer">Webmail</a>
+                <a href="https://parceiro.meuerponline.com.br/" class="link-button" rel="noopener noreferrer">Portal do Parceiro Vende Aqui</a>
+                <a href="https://gruporrstrike.com.br" class="link-button" rel="noopener noreferrer">Vende Aqui ERP</a>
             </div>
         </div>
     </div>
@@ -542,7 +539,6 @@
     </div>
 
     <script>
-        // Função utilitária para mostrar feedback visual
         function showFeedback(element, message, duration = 7000) {
             element.innerHTML = message;
             element.classList.add('show', 'fade-in');
@@ -553,7 +549,6 @@
             }, duration);
         }
         
-        // Função utilitária para copiar texto
         async function copyToClipboard(text) {
             try {
                 await navigator.clipboard.writeText(text);
@@ -564,7 +559,6 @@
             }
         }
         
-        // Função utilitária para adicionar loading state
         function addLoadingState(button) {
             button.classList.add('loading');
             setTimeout(() => {
@@ -572,12 +566,11 @@
             }, 500);
         }
 
-        // SENHA TÉCNICA: Agora é fixa
         function mostrarSenhaECopiar() {
             const button = event.target;
             addLoadingState(button);
             
-            const xSenha = '$070825@';
+            const xSenha = '2@26@112';
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(xSenha);
@@ -596,7 +589,6 @@
             showFeedback(resultadoElement, `<strong>Senha Sync:</strong> ${xSenha} <br><small>✅ Copiada para área de transferência</small>`);
         }
 
-        // SENHAS ANTIGAS: S5 agora é a fórmula dinâmica
         function mostrarSenhasAntigas() {
             const button = event.target;
             addLoadingState(button);
@@ -607,13 +599,14 @@
             const senha3 = '*929798@';
             const senha4 = '*341154@';
             const senha5 = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 5).toString();
-            const senhasTexto = `${senha1} ${senha2} ${senha3} ${senha4} ${senha5}`;
+            const senha6 = '$070825@';
+            const senhasTexto = `${senha1} ${senha2} ${senha3} ${senha4} ${senha5} ${senha6}`;
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(senhasTexto);
             showFeedback(resultadoElement, 
                 `<strong>Senhas Antigas:</strong><br>
-                S1: ${senha1} | S2: ${senha2} | S3: ${senha3} | S4: ${senha4} | S5: ${senha5}<br>
+                S1: ${senha1} | S2: ${senha2} | S3: ${senha3} | S4: ${senha4} | S5: ${senha5} | S6: ${senha6}<br>
                 <small>✅ Todas copiadas para área de transferência</small>`
             );
         }
@@ -630,12 +623,11 @@
             
             const linkSenhas = "https://gruporrstrike-my.sharepoint.com/personal/gustavo_gruporrstrike_com_br/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fgustavo%5Fgruporrstrike%5Fcom%5Fbr%2FDocuments%2FSenhas%202%2E9%2Eexe";
             
-            // Atualizado o arquivo de contrasenhas com a nova lógica
             const contrasenhas = `Senha Projercom: ${senha}\n` +
                                  `Gerado em: ${data.toLocaleDateString()} às ${hora}:${minutos}\n` +
-                                 `Senha Técnica: $070825@\n` +
+                                 `Senha Técnica: 2@26@112\n` +
                                  `Senha Sync: @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 10).toString()}\n` +
-                                 `Senhas Antigas: *0724@, $&0924@, *929798@, *341154@, @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 5).toString()}\n\n` +
+                                 `Senhas Antigas: *0724@, $&0924@, *929798@, *341154@, @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 5).toString()}, $070825@\n\n` +
                                  `Link para download do programa de senhas:\n` +
                                  `${linkSenhas}`;
             
@@ -658,7 +650,6 @@
             }, 7000);
         }
         
-        // Adicionar efeito de ripple nos botões
         document.addEventListener('click', function(e) {
             if (e.target.tagName === 'BUTTON' || e.target.classList.contains('link-button') || e.target.classList.contains('highlight-button')) {
                 const ripple = document.createElement('span');
@@ -688,7 +679,6 @@
             }
         });
         
-        // Adicionar animação de ripple
         const style = document.createElement('style');
         style.textContent = `
             @keyframes ripple {
