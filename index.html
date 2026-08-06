@@ -570,7 +570,7 @@
             const button = event.target;
             addLoadingState(button);
             
-            const xSenha = '2@26@112';
+            const xSenha = '7@26@21';
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(xSenha);
@@ -600,13 +600,14 @@
             const senha4 = '*341154@';
             const senha5 = '@' + (xData.getDate() + xData.getMonth() + 1).toString() + (xData.getHours() + 5).toString();
             const senha6 = '$070825@';
-            const senhasTexto = `${senha1} ${senha2} ${senha3} ${senha4} ${senha5} ${senha6}`;
+            const senha7 = '2@26@112';
+            const senhasTexto = `${senha1} ${senha2} ${senha3} ${senha4} ${senha5} ${senha6} ${senha7}`;
             const resultadoElement = document.getElementById('resultado');
             
             copyToClipboard(senhasTexto);
             showFeedback(resultadoElement, 
                 `<strong>Senhas Antigas:</strong><br>
-                S1: ${senha1} | S2: ${senha2} | S3: ${senha3} | S4: ${senha4} | S5: ${senha5} | S6: ${senha6}<br>
+                S1: ${senha1} | S2: ${senha2} | S3: ${senha3} | S4: ${senha4} | S5: ${senha5} | S6: ${senha6} | ${senha7}<br>
                 <small>✅ Todas copiadas para área de transferência</small>`
             );
         }
@@ -625,7 +626,7 @@
             
             const contrasenhas = `Senha Projercom: ${senha}\n` +
                                  `Gerado em: ${data.toLocaleDateString()} às ${hora}:${minutos}\n` +
-                                 `Senha Técnica: 2@26@112\n` +
+                                 `Senha Técnica: 7@26@21\n` +
                                  `Senha Sync: @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 10).toString()}\n` +
                                  `Senhas Antigas: *0724@, $&0924@, *929798@, *341154@, @${(data.getDate() + data.getMonth() + 1).toString() + (data.getHours() + 5).toString()}, $070825@\n\n` +
                                  `Link para download do programa de senhas:\n` +
